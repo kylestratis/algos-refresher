@@ -32,3 +32,21 @@ sub count_list {
 
 $x = count_list(arr => [1, 2, 3, 4]);
 print "My answer to 4.2: $x\n";
+
+# Exercise 4.3
+# Write fxn to get max item in a list
+sub max_num {
+    my %inputs = @_;
+    my @array = @{$inputs{arr}};
+
+    if (scalar @array == 2) {
+        ($array[0] > $array[1]) ? return $array[0] : return $array[1];
+    }
+
+    my $max = max_num(arr => [@array[1..$#array]]);
+    
+    ($array[0] > $max) ? return $array[0] : return $max;
+}
+
+$x = max_num(arr => [1, 59, 3, 5]);
+print "My answer to 4.3: $x\n";
